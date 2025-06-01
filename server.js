@@ -10,6 +10,7 @@ import professionalProfileRoutes from './src/routes/professionalProfileRoutes.js
 import companyProfileRoutes from './src/routes/companyDashboard/companyProfileRoutes.js';
 import collegeProfileRoutes from './src/routes/collegeDashboard/collegeProfileRoutes.js';
 import collegeOnboardingRoutes from './src/routes/collegeDashboard/collegeOnboardingRoutes.js';
+import employerProfileRoutes from './src/routes/employerProfileRoutes.js';
 
 
 
@@ -34,6 +35,8 @@ app.use('/api/professional-profile', professionalProfileRoutes); // ⬅️ New r
 app.use('/api/companyDashboard', companyProfileRoutes);
 app.use('/api/college', collegeProfileRoutes);
 app.use('/api/college-onboarding', collegeOnboardingRoutes);
+app.use('/api/employer-profile', employerProfileRoutes);
+
 
 
 
