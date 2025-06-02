@@ -1,7 +1,10 @@
-// src/models/auth.js
 import mongoose from 'mongoose';
 
-const authSchema = new mongoose.Schema({
+const AuthSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    default: null // Optional for manual users
+  },
   email: {
     type: String,
     required: true,
@@ -9,10 +12,22 @@ const authSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
+    default: null // Optional for Google/LinkedIn users
+  },
+  profileImage: {
+    type: String,
+    default: null // Optional, only used by OAuth
+  },
+  userType: {
+    type: String,
+    enum: ['candidate', 'college', 'company'],
+    default: 'candidate' // Optional unless you use role-based logic
+  },
+  authProvider: {
+    type: String,
+    enum: ['manual', 'google', 'linkedin'],
+    default: 'manual' // Optional but useful for login handling
   }
 }, { timestamps: true });
 
-const Auth = mongoose.model('Auth', authSchema);
-
-export default Auth;
+export default mongoose.models.Auth || mongoose.model('Auth', AuthSchema);

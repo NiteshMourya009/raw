@@ -1,4 +1,15 @@
+// models/employerProfileModel.js
 import mongoose from 'mongoose';
+
+const teamMemberSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  userType: String, // admin, recruiter, viewer
+  status: String,   // active, pending, inactive
+  jobRole: String,
+  jobPosts: Number,
+  resumeAccess: Boolean
+});
 
 const employerProfileSchema = new mongoose.Schema({
   companyName: String,
@@ -16,18 +27,23 @@ const employerProfileSchema = new mongoose.Schema({
   pincode: String,
   companyWebsite: String,
   linkedinProfile: String,
+  backgroundImage: String,
+  profilePicture: String, // for page 1 of EmployerUsers
+  employeeName: String,
+  employeeDesignation: String,
   hiringPreferences: {
     jobRoles: [String],
     preferredHiringLocations: [String],
-    lookingFor: String, // job, internship, both
-    employmentType: String, // full time, part time, contract
+    lookingFor: String,
+    employmentType: String,
   },
   companyVerification: {
-    verificationDocuments: [String], // Cloudinary URLs
+    verificationDocuments: [String],
     tanNumber: String,
     gstNumber: String,
     companyRegNumber: String,
   },
+  teamMembers: [teamMemberSchema] // for page 2 of EmployerUsers
 }, {
   timestamps: true
 });
