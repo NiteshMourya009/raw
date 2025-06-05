@@ -1,4 +1,4 @@
-cd t# Logs
+cd# Logs
 logs
 *.log
 npm-debug.log*
